@@ -1,3 +1,18 @@
+'use strict'
+// strict mode avoid us from leaked global variables (setting a value for undecleard variable)
+// strict mode avoid us from using a reserved words as a variables.
+
+let isPublic = true   // without strict mode the app will run normally but using strict mode
+                    // it will crash and tell us that public is an reserved word
+
+let data    // we declared it to avoid app crashes.
+const processData = () => {
+    data = '12423423' // leaked global variable 
+}
+
+processData()
+console.log(data)
+
 // console.log(uuidv4())
 
 // all files share the same global variables name

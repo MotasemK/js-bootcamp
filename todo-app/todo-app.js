@@ -1,3 +1,4 @@
+'use strict'
 
 // const todos = [{
 //     text: 'Order cat food',

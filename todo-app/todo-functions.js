@@ -1,3 +1,4 @@
+'use strict'
 
 // Fetch existing todos from local Storage
 
