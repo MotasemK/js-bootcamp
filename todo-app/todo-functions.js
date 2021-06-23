@@ -4,8 +4,14 @@
 function getSavedTodos() {
     const todosJSON = localStorage.getItem('todos')
 
-    // Truthy and falsy logic and ternary operator method
-    return todosJSON ? JSON.parse(todosJSON) : []
+    // adding try catch blocks to check the local storage data validity.
+    try{
+        // Truthy and falsy logic and ternary operator method
+        return todosJSON ? JSON.parse(todosJSON) : []
+    } catch(e){
+        return []   // [] is an valid JSON data
+    }
+    
    
     // if(todosJSON !== undefined){
     //     // todos =  JSON.parse(todosJSON)

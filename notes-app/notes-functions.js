@@ -9,6 +9,19 @@ const getSavedNotes = () => {
     // Check for existing saved data
     const notesJSON = localStorage.getItem('notes')
 
+    // HERE we are parsing local storage data blindly without checking if its 
+    // valid data (JSON data) or not so if anyone mess with that data in the 
+    // browser local storage the whole app will crashes!!! so we want to handle
+    // this situation using try and catch boiler plate. and put the return value
+    // inside the try block to check its validity.
+
+    try{
+        return notesJSON ? JSON.parse(notesJSON) : []
+    } catch (e){
+        return []   // if data is invalid we will return an empty array. as a valid data.
+                    // an empty array is a valid JSON so when we return it the app will be fixed :D
+    }
+
     // if(notesJSON !== null){
     //     return JSON.parse(notesJSON)
     // }else{
@@ -20,7 +33,7 @@ const getSavedNotes = () => {
 
     // step 2 we can exchange the notesJSON !== null to be notesJSON according to our knowledge in truthy and falsy.
     // (if there is notesJSON which means true)
-    return notesJSON ? JSON.parse(notesJSON) : []
+    
 }
 
 // Save the notes to localStorage
