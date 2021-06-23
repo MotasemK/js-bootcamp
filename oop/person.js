@@ -32,6 +32,11 @@ Person.prototype.setName = function (fullName) {
 }
 
 const me = new Person('Motasem', 'Khalefa' , 24, ['Swimming', 'Travelling'])    
+/*me.getBio = function(){ // changes in getBio are restricted to me instance only because this property are added to me instance only.
+                        // process is : we call getBio so we go to instance and looking for it we found it without needs of chaining to prototype property.
+                        // in person2 instance we didnt add getBio property so we chained up to a prototype to looking for it.
+    return 'This is fake'
+}*/
 
 me.setName('Majd Hussein')
 console.log(me.getBio())
