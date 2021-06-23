@@ -4,7 +4,8 @@
 
 // Read existing notes from local storage.
 
-function getSavedNotes(){
+// Converted to an arrow function 
+const getSavedNotes = () => {
     // Check for existing saved data
     const notesJSON = localStorage.getItem('notes')
 
@@ -23,9 +24,7 @@ function saveNotes(notes){
 
 // Remove a note from the list.
 function removeNote(id){
-    const noteIndex = notes.findIndex(function(note){
-        return note.id === id
-    })
+    const noteIndex = notes.findIndex((note) => note.id === id)
     if(noteIndex > -1){
         notes.splice(noteIndex, 1)
     }
@@ -62,7 +61,7 @@ function generateNoteDOM(note){
 // Sort your notes by one of three ways
 function sortNotes(notes, sortBy){
     if(sortBy === 'byEdited'){
-        return notes.sort(function(a, b){
+        return notes.sort((a, b) => {
             if(a.updatedAt > b.updatedAt){ // if so then a more recent
                 return -1 // put a first
             }else if(a.updatedAt < b.updatedAt){
@@ -73,7 +72,7 @@ function sortNotes(notes, sortBy){
 
         })
     }else if(sortBy === 'byCreated'){
-        return notes.sort(function(a, b){
+        return notes.sort((a, b) => {
             if(a.createdAt > b.createdAt){
                 return -1
             }else if(a.createdAt < b.createdAt){
