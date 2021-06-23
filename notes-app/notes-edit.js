@@ -10,7 +10,8 @@ let note = notes.find(function(note){
     return note.id === noteId
 })
 
-if(note === undefined){
+// exchange note === undefined to be !note only according to our knowledge in truthy and falsy values
+if(!note){
     location.assign('/index.html')
 }
 
@@ -44,8 +45,8 @@ window.addEventListener('storage',(e) => {
         note = notes.find(function(note){
             return note.id === noteId
         })
-        
-        if(note === undefined){
+        // changing note === undefined to be !note 
+        if(!note){
             location.assign('/index.html')
         }
         

@@ -9,11 +9,18 @@ const getSavedNotes = () => {
     // Check for existing saved data
     const notesJSON = localStorage.getItem('notes')
 
-    if(notesJSON !== null){
-        return JSON.parse(notesJSON)
-    }else{
-        return []
-    }
+    // if(notesJSON !== null){
+    //     return JSON.parse(notesJSON)
+    // }else{
+    //     return []
+    // }
+
+    // step 1 convert this if statement to be ternary operation
+    // return notesJSON !== null ? JSON.parse(notesJSON) : []
+
+    // step 2 we can exchange the notesJSON !== null to be notesJSON according to our knowledge in truthy and falsy.
+    // (if there is notesJSON which means true)
+    return notesJSON ? JSON.parse(notesJSON) : []
 }
 
 // Save the notes to localStorage
