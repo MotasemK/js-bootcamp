@@ -71,8 +71,53 @@ class Person {
         this.lastName = names[1]
     }
 }
-const myPerson = new Person('Motasem', 'Khalefa' , 24, ['Swimming', 'Travelling'])
-console.log(myPerson.getBio())
 
-const person2 = new Person('fayez', 'alraheel', 25)
-console.log(person2.getBio())
+// Subclass inheirits behaviour from Person without duplicating the code by extends it
+class Employee extends Person{
+    // after making constructor function here it will not actually run the parent constructor function in Person
+    constructor(firstName, lastName, age, position, likes){
+        super(firstName, lastName, age, likes)
+        this.position = position
+    }
+    // Override getBio 
+    getBio() {
+        return `${this.firstName} ${this.lastName} is a ${this.position}`
+        // Motasem is an Engineer
+    }
+    getYearsLeft(){
+        return 65 - this.age
+    }
+}
+
+// const myPerson = new Employee('Motasem', 'Khalefa' , 24, 'Engineer', ['Swimming', 'Travelling'])
+// myPerson.setName('alexis Turner')
+// console.log(myPerson.getBio())
+// console.log(myPerson.getYearsLeft())
+
+// const person2 = new Person('fayez', 'alraheel', 25)
+// console.log(person2)
+
+class Student extends Person{
+    constructor(firstName, lastName, age, likes, grade){
+    super(firstName, lastName, age, likes)
+    this.grade = grade
+    }
+    getBio(){/*
+        if(this.grade >= 70){
+            return `${this.firstName} is passing the class`
+        }else{
+            return `${this.firstName} is failed`
+        }*/
+        return this.grade >= 70? `${this.firstName} is passing the class` : `${this.firstName} is failed`
+    }
+    changeGrade(amount){
+        this.grade += amount
+    }
+}
+
+const student1 = new Student('Motasem', 'Khaled', 24, ['Swimming', 'Travelling'], 68)
+console.log(student1)
+console.log(student1.getBio())
+
+student1.changeGrade(+20)
+console.log(student1.getBio())
