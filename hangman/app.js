@@ -66,6 +66,26 @@ console.log(team.hasOwnProperty('filter'))*/ // array dont have filter method bu
 // console.log(product.split())
 // primitives have object wrapper when we call split method JS behind the scene converts the string to an object
 
-const product = new String('phone')
-console.log(product)
+// const product = new String('phone')
+// console.log(product)
 // if we declare it like that we could explore all the methods contains in the proto.
+
+const puzzelEl = document.querySelector('#puzzle')
+const guessesEl = document.querySelector('#guesses')
+
+const game1 = new Hangman('cat', 2)
+
+puzzelEl.textContent = game1.getPuzzel()
+guessesEl.textContent = game1.getStatusMessage()
+
+
+// console.log(game1.getPuzzel())
+// console.log(game1.remainingGuesses)
+
+window.addEventListener('keypress',(e)=>{
+    const guess = e.key
+    game1.makeGuess(guess)
+    puzzelEl.textContent = game1.getPuzzel()
+    guessesEl.textContent = game1.getStatusMessage()
+
+})
