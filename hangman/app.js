@@ -73,7 +73,7 @@ console.log(team.hasOwnProperty('filter'))*/ // array dont have filter method bu
 const puzzelEl = document.querySelector('#puzzle')
 const guessesEl = document.querySelector('#guesses')
 
-const game1 = new Hangman('cat', 2)
+const game1 = new Hangman('car parts', 2)
 
 puzzelEl.textContent = game1.puzzel
 guessesEl.textContent = game1.statusMessage
