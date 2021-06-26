@@ -20,3 +20,23 @@ const getPuzzle = (callback) =>{
     // send request
     request.send()
 }
+
+const getCountry = (countryCode ,callback) => {
+    const countryRequest = new XMLHttpRequest()
+ 
+    countryRequest.addEventListener('readystatechange', (e) => {
+        if(e.target.readyState === 4 && e.target.status === 200){
+            const data = JSON.parse(e.target.responseText)
+            const location = data.find((item) => { // filter method to filtering the array and get a new filtered array.. find method used if we want to look for a specific known item and return that item only not an array
+                return item.alpha2Code === countryCode
+            })
+            callback(undefined, location)
+
+        } else if (e.target.readyState === 4){
+            callback('Unable to fetch data', undefined)
+        }
+    })
+
+    countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
+    countryRequest.send()
+}

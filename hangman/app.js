@@ -90,7 +90,7 @@ window.addEventListener('keypress',(e)=>{
 
 })
 
-// callback function
+// callback function - // Here we use Asynchronous excution.
 getPuzzle((error, puzzle) => {
     if (error){
         console.log(`Error: ${error}`)
@@ -99,6 +99,13 @@ getPuzzle((error, puzzle) => {
     }
 })
 
+getCountry('JO', (error, country) => {
+    if (error){
+        console.log(error)
+    }else{
+        console.log(`country name: ${country.name}`)
+    }
+})
 
 // ----------- HTTP (Hypertext Transfer Protocol) -----------
 // Request - What do we want to do.
