@@ -75,7 +75,7 @@ const guessesEl = document.querySelector('#guesses')
 
 const game1 = new Hangman('car parts', 2)
 
-puzzelEl.textContent = game1.puzzel
+puzzelEl.textContent = game1.puzzle
 guessesEl.textContent = game1.statusMessage
 
 
@@ -85,10 +85,20 @@ guessesEl.textContent = game1.statusMessage
 window.addEventListener('keypress',(e)=>{
     const guess = e.key
     game1.makeGuess(guess)
-    puzzelEl.textContent = game1.puzzel
+    puzzelEl.textContent = game1.puzzle
     guessesEl.textContent = game1.statusMessage
 
 })
+
+// callback function
+getPuzzle((error, puzzle) => {
+    if (error){
+        console.log(`Error: ${error}`)
+    }else{
+        console.log(puzzle)
+    }
+})
+
 
 // ----------- HTTP (Hypertext Transfer Protocol) -----------
 // Request - What do we want to do.
@@ -97,42 +107,42 @@ window.addEventListener('keypress',(e)=>{
 
 
 // Making an HTTP request 
-const request = new XMLHttpRequest()
+// const request = new XMLHttpRequest()
 
-// Adding an event listner to do somthing in the data comes from http call. (check browser you will find a new request called puzzle)
-// explore readystate in mdn document to see readystate values and status
-request.addEventListener('readystatechange',(e) => {
-    if (e.target.readyState === 4 && e.target.status === 200 ){ // finished succesfully . check httpstatuses in Goolge.
-        const data = JSON.parse(e.target.responseText)
-        console.log(data)
-    }else if (e.target.readyState === 4){
-        console.log('An error has taken place')
-    }
-})
+// // Adding an event listner to do somthing in the data comes from http call. (check browser you will find a new request called puzzle)
+// // explore readystate in mdn document to see readystate values and status
+// request.addEventListener('readystatechange',(e) => {
+//     if (e.target.readyState === 4 && e.target.status === 200 ){ // finished succesfully . check httpstatuses in Goolge.
+//         const data = JSON.parse(e.target.responseText)
+//         console.log(data)
+//     }else if (e.target.readyState === 4){
+//         console.log('An error has taken place')
+//     }
+// })
 
-// Initialize our request - setup the url and the http method. 
-request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3')
+// // Initialize our request - setup the url and the http method. 
+// request.open('GET', 'http://puzzle.mead.io/puzzle?wordCount=3')
 
-// Send Request
-request.send()
+// // Send Request
+// request.send()
 
-// Challenge 
+// // Challenge 
 
-const countryRequest = new XMLHttpRequest()
-const countryCode = 'JO'
-countryRequest.addEventListener('readystatechange', (e) => {
-    if(e.target.readyState === 4 && e.target.status === 200){
-        const data = JSON.parse(e.target.responseText)
-        // console.log(data)
-        const location = data.find((item) => { // filter method to filtering the array and get a new filtered array.. find method used if we want to look for a specific known item and return that item only not an array
-            return item.alpha2Code === countryCode
-        })
+// const countryRequest = new XMLHttpRequest()
+// const countryCode = 'JO'
+// countryRequest.addEventListener('readystatechange', (e) => {
+//     if(e.target.readyState === 4 && e.target.status === 200){
+//         const data = JSON.parse(e.target.responseText)
+//         // console.log(data)
+//         const location = data.find((item) => { // filter method to filtering the array and get a new filtered array.. find method used if we want to look for a specific known item and return that item only not an array
+//             return item.alpha2Code === countryCode
+//         })
 
-        console.log(location.name)
-    } else if (e.target.readyState === 4){
-        console.log("Unable to fetch data.")
-    }
-})
+//         console.log(location.name)
+//     } else if (e.target.readyState === 4){
+//         console.log("Unable to fetch data.")
+//     }
+// })
 
-countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
-countryRequest.send()
+// countryRequest.open('GET', 'http://restcountries.eu/rest/v2/all')
+// countryRequest.send()

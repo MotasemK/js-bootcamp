@@ -110,17 +110,17 @@ class Hangman {
         }
     }
     get puzzel(){
-        let puzzel = ''
+        let puzzle = ''
 
         this.word.forEach((letter) => {
             if (this.guessedLetters.includes(letter) || letter === ' '){
-                puzzel += letter
+                puzzle += letter
             }else{
-                puzzel += '*'
+                puzzle += '*'
             }
         })
 
-        return puzzel
+        return puzzle
     }
     makeGuess(guess){
         guess = guess.toLowerCase()
